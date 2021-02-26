@@ -3,8 +3,8 @@
 #define stack_h
 #include "node.h"
 typedef struct {
-	NodePtr top = NULL;
-	int size = 0;
+	NodePtr top;
+	int size;
 }Stack;
 
 typedef Stack * StackPtr;
@@ -29,7 +29,13 @@ char pop(StackPtr s){
     s->size -= 1;
     return val;
   }
-  else return NULL;
 }
-void pop_all(StackPtr s);
+void pop_all(StackPtr s){
+  char val;
+  while(s->size!=0){
+    val = pop(s);
+    printf("Popping %c from stack\n",val);
+  }
+}
+
 #endif
